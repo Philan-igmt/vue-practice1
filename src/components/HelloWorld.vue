@@ -1,5 +1,6 @@
 <template>
 <div class="card">
+  
   <div class="image">
     <img src="https://picsum.photos/200/200" alt="">
   </div>
@@ -22,16 +23,27 @@
     <input type="text" v-model="namee">
     <input type="number" v-model="age">
     <button :class="dis"  @click="hello">add to list</button>
+    <button @click="me">click</button>
+    {{check}}
   </div>
+
+<Edit data="array"/>
+
+
 
 </div>
 
 </template>
 
 <script>
-export default {
+import Edit from './Edit';
 
+
+export default {
   name: 'HelloWorld',
+  components:{
+    Edit
+  },
   props: {
     msg: String
 
@@ -42,6 +54,7 @@ export default {
       statement:true,
       namee:'',
       age:'',
+      check:'',
       
       array:[
         {name:'Philani', age:22},
@@ -55,6 +68,9 @@ export default {
   methods:{
     hello:function(){
       this.array.push({name:this.namee,age:this.age});
+    },
+    me:function(){
+      this.check = typeof(this.array);
     }
   }
 }
